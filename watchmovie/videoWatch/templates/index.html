@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+Watch Movie
+{% endblock title %}
+{% block content %}
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            {% if search %}
+                <h1>Search : {{ search }}</h1><br/><br/>
+            {% endif %}
+            <!-- content card -->
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                        {% for i in vid %}
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <article class="post-grid mb-5 ">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card" style="width: 18rem;">
+                                        <video id="my video"
+                                            class ="card-img-top"
+                                            controls
+                                            preload = "auto" 
+                                            muted = "true"
+                                            data-setup = "{}">
+                                            <source src="{{ i.file.url }}" type="video/mp4">
+                                        </video>
+                                    <div class="card-body">
+                                        <a href="{% url 'watch-video' i.id %}" class="card-link">
+                                            <h5 class="card-title">{{ i.name }}</h5>
+                                        </a>
+                                        <p class="card-text">
+                                            {{ i.image.url }}
+                                            {{ i.name }}
+                                        </p>
+                                </div> 
+                            </article>
+                        </div>
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

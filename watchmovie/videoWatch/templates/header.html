@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <h1><a class="navbar-brand badge text-bg-dark" href="{% url 'homePage' %}">Watch Movie</a></h1>
+        <div class="container text-center">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <form class="d-flex" role="search" method='POST' action="{% url 'search-view'%}">
+                  {% csrf_token %}
+                  <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </nav>

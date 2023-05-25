@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="position-absolute top-50 start-50 translate-middle">
+    <form method="POST">
+        {{ user.username }}
+        {% csrf_token %}
+            <div class="card bg-info" style="width: 18rem;"> 
+                <div class="mb-3 m-3">
+                    <label for="exampleFormControlInput1" class="form-label" >Username</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="Your Username">
+                </div>
+                <div class="mb-3 m-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+                    <input class="form-control" type="password" id="exampleFormControlTextarea1" name="password" rows="3" placeholder="Your Password">
+                </div>
+                <div class="mb-3 m-3">
+                    <button class="form-control" type="submit" >Submit</button>
+                </div>
+            </div>
+    </form>
+</div>
+
+{% endblock content %}

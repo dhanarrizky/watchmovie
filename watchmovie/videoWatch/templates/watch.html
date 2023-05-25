@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Waith cideos{% endblock title %}
+{% block content %}
+<div class="container text-center">
+  {% for wat in watch %}
+    <div class="row">
+        
+            <div class="col-8">
+                <div class="card mb-3">
+                    <video id="my video"
+                    class ="card-img-top"
+                    controls
+                    preload = "auto" 
+                    autoplay
+                    data-setup = "{}">
+                    <source src="{{ wat.file.url }}" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ wat.name }}
+                    </h5>
+                    <p class="card-text">
+                        {{ wat.description }}
+                    </p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+      </div>
+      
+      <div class="col-4">
+
+        {% for vid in videos %}
+          {% if wat.id != vid.id %}  
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-7">
+                    <video id="my video"
+                        class ="card-img-top"
+                        controls
+                        preload = "auto" 
+                        muted = "true"
+                        data-setup = "{}">
+                        <source src="{{ vid.file.url }}" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="card-body">
+                        <a href="{% url 'watch-video' vid.id %}" class="card-link">
+                            <h5 class="card-title">{{ vid.name }}</h5>
+                        </a>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    
+    {% endfor %}
+</div>
+{% endblock content %}
